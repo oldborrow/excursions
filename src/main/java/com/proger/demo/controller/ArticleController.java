@@ -15,8 +15,8 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Collection<Article> getAllArticles() {
+    @GetMapping
+    public Collection<Article> printingArticles() {
         return articleService.getAllArticles();
     }
 }

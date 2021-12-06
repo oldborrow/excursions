@@ -1,31 +1,25 @@
 package com.proger.demo.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+@Getter @Setter @NoArgsConstructor
 public class Article {
 
-    private int id;
-    private String name;
+    private Long id;
+    private String title;
+    private LocalDate creationDate;
+    private String content;
 
-    public Article() {}
-
-    public Article(int id, String name) {
+    public Article(Long id,
+                   String title,
+                   LocalDate creationDate,
+                   String content) {
         this.id = id;
-        this.name = name;
+        this.title = title;
+        this.creationDate = creationDate;
+        this.content = content;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
 }

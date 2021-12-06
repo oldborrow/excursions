@@ -13,7 +13,7 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 
-		//SpringApplication.run(DemoApplication.class, args);
+		// SpringApplication.run(DemoApplication.class, args);
 		SpringApplication app = new SpringApplication(DemoApplication.class);
 
 		app.setBanner((environment, sourceClass, out) -> out.print("\n\n\tThis is my own banner!\n\n".toUpperCase()));
