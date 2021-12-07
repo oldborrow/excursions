@@ -17,6 +17,18 @@ public class ArticleController {
 
     @GetMapping
     public Collection<Article> printingArticles() {
-        return articleService.getAllArticles();
+        articleService.addArticles();
+        return articleService.getArticles();
+    }
+
+    @PostMapping
+    public void registerNewArticle(@RequestBody Article article) {
+        articleService.addNewArticle(article);
+    }
+
+    @DeleteMapping(path="{articleId}")
+    public void deleteArticle(
+            @PathVariable("articleId") Long articleId) {
+        articleService.deleteArticle(articleId);
     }
 }
