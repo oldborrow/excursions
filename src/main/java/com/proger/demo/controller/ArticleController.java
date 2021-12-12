@@ -17,7 +17,6 @@ public class ArticleController {
 
     @GetMapping
     public Collection<Article> printingArticles() {
-        articleService.addArticles();
         return articleService.getArticles();
     }
 

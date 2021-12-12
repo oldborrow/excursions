@@ -22,9 +22,7 @@ public class ArticleService {
         return articleRepository.findAll();
     }
 
-    public void addArticles() {
-        articleRepository.saveAll(List.of(new Article("I'm from service", "seeming sus lately")));
-    }
+
 
     public void addNewArticle(Article article) {
         Optional<Article> articleOptional = articleRepository
