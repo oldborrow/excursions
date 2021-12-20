@@ -4,34 +4,24 @@ import 'antd/dist/antd.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
-import Footer from "./Footer";
+import {BrowserRouter, Redirect, Route, Routes} from "react-router-dom";
+import {Breadcrumb} from "antd";
+import AddArticleForm from "./forms/AddArticleForm"
 
 ReactDOM.render(
-
   <React.StrictMode>
-      {/*<App />*/}
       <BrowserRouter>
-
-          <ul>
-              <li>
-                  <Link to="/">Home</Link>
-              </li>
-              <li>
-                  <Link to="/ListOfUsers">ListOfUsers</Link>
-              </li>
-              <li>
-                  <Link to="/contact">Contact Us</Link>
-              </li>
-          </ul>
+          <Breadcrumb>
+              <Breadcrumb.Item>
+                  <a href="/">Main</a>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                  <a href="/editor">Editor</a>
+              </Breadcrumb.Item>
+          </Breadcrumb>
           <Routes>
-              <Route path="/ListOfUsers" element={<App/>}/>
-
-              {/*<Route path="/ListOfProviders" component={ListOfProviders} />
-                <Route path="/ListOfDiagnosis" component={ListOfDiagnosis} />
-                <Route path="/ListOfNewPatients" component={ListOfNewPatients} />
-                <Route path="/NumberOfAdmissions" component={NumberOfAdmissions} />
-                <Route component={ListOfUsers} />*/}
+              <Route path="/" element={<App/>}/>
+              <Route path="/editor" element={<AddArticleForm/>}/>
           </Routes>
       </BrowserRouter>
   </React.StrictMode>,

@@ -1,12 +1,11 @@
-import getAllArticles from './client';
-import {Routes, Route, BrowserRouter as Router, hashHistory, Link} from 'react-router-dom';
+import { getAllArticles } from './client';
 import Footer from './Footer';
 import {
     Card,
     Spin,
-    Modal,
-    Breadcrumb
+    Modal
 } from 'antd';
+import {errorNotification} from "./Notification";
 import './App.css';
 import React from "react";
 
@@ -31,7 +30,7 @@ class App extends React.Component {
         this.setState({
             isFetching : true
         })
-        getAllArticles
+        getAllArticles()
             .then(res => res.json()
                 .then(articles => {
                     console.log(articles)
@@ -40,6 +39,14 @@ class App extends React.Component {
                         isFetching : false
                     })
                 }))
+            .catch(error => {
+                const message = error.error.message;
+                const description = error.error.error;
+                errorNotification(message, description);
+                this.setState({
+                    isFetching: false
+                })
+            })
     }
 
     render() {
@@ -59,7 +66,7 @@ class App extends React.Component {
 
                 <Card title={article.title}
                       extra={<a href="#">Read</a>}
-                      style={{width : 300,  margin: '0 auto', textAlign: 'center'}}
+                      style={{width : 300,  margin: '0 auto', textAlign: 'center', marginBottom: '20px'}}
                       hoverable={true}>
                     <p>{article.content}</p>
                     <p>Card content</p>

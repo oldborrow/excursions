@@ -1,5 +1,6 @@
 package com.proger.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,9 +34,18 @@ public class Article {
         this.content = content;
     }
 
-    public Article(String title,
-                   String content) {
+    public Article(@JsonProperty("title") String title,
+                   @JsonProperty("content") String content) {
         this.title = title;
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                '}';
     }
 }
