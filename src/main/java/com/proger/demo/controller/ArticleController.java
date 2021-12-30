@@ -18,8 +18,8 @@ public class ArticleController {
 
     @GetMapping
     public Collection<Article> printingArticles() {
-//        return articleService.getArticles();
-        throw new ApiRequestException("Oops cant get all articles with custom exception");
+        return articleService.getArticles();
+        //throw new ApiRequestException("Oops cant get all articles with custom exception");
     }
 
     @DeleteMapping(path="{articleId}")

@@ -1,6 +1,7 @@
 package com.proger.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +24,11 @@ public class Article {
     )
     @Id
     private Long id;
+
+    @NotBlank
     private String title;
+
+    @NotBlank
     private String content;
 
     public Article(Long id,
