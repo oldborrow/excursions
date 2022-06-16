@@ -13,4 +13,6 @@ public interface ArticleRepository
     // SELECT * FROM article WHERE email = ?
     Optional<Article> findArticleByTitle(String title);
 
+    Article findByTitleIgnoreCase(String title);
+
 }

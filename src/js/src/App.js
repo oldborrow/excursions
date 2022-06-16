@@ -2,14 +2,12 @@ import { getAllArticles } from './client';
 import Footer from './Footer';
 import {
     Card,
-    Spin,
-    Modal
+    Spin
 } from 'antd';
-import {errorNotification} from "./Notification";
-import './App.css';
+import {errorNotification} from "./useless scripts/Notification";
+import './css/App.css';
 import React from "react";
-
-
+import { Col, Row } from 'antd';
 class App extends React.Component {
 
     state = {
@@ -30,8 +28,7 @@ class App extends React.Component {
         this.setState({
             isFetching : true
         })
-        getAllArticles()
-            .then(res => res.json()
+        getAllArticles().then(res => res.json()
                 .then(articles => {
                     console.log(articles)
                     this.setState({
@@ -52,7 +49,6 @@ class App extends React.Component {
     render() {
 
         const {articles, isFetching, isAddArticleModalVisible} = this.state;
-
         if (isFetching) {
             return (
                 <Spin size="large"/>
@@ -61,36 +57,29 @@ class App extends React.Component {
 
 
         const listCards = articles.map((article, id) => {
-
+            const reference = "http://localhost:3000/excursion/" + id
             return (
 
+                    <Col span={8} >
                 <Card title={article.title}
-                      extra={<a href="#">Read</a>}
-                      style={{width : 300,  margin: '0 auto', textAlign: 'center', marginBottom: '20px'}}
+                      style={{width : 400, height: 150, margin: '0 auto', textAlign: 'center', marginTop: '20px'}}
                       hoverable={true}>
                     <p>{article.content}</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
+                    <a href={reference}>Подробнее</a>
 
                 </Card>
+                    </Col>
 
             )
         })
 
         return (
-            <div>
-
-                {listCards}
-                <Modal
-                    title='Add new article'
-                    visible={isAddArticleModalVisible}
-                    onOk={this.closeAddArticleModal}
-                    onCancel={this.closeAddArticleModal}
-                    width={1000}>
-                    <h1>Hello modal with Antd</h1>
-                </Modal>
-                <Footer handleAddArticleClickEvent={this.openAddArticleModal}/>
-            </div>
+                        <div>
+                            <Row gutter={16}>
+                                {listCards}
+                            </Row>
+                            <Footer handleAddArticleClickEvent={this.openAddArticleModal}/>
+                        </div>
 
         )
     }

@@ -31,6 +31,7 @@ public class Article {
     @NotBlank
     private String content;
 
+
     public Article(Long id,
                    String title,
                    String content) {

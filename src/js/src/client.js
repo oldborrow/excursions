@@ -14,14 +14,16 @@ const checkStatus = response => {
 }
 
 export const getAllArticles = () =>
-    fetch('api/articles').then(checkStatus);
+    fetch('/api/articles').then(checkStatus);
 
 export const addNewArticle = article =>
-    fetch('api/editor', {
+    fetch('/api/editor', {
         headers: {
             'Content-Type' : 'application/json'
         },
-
         method: 'POST',
         body: JSON.stringify(article)
     }).then(checkStatus);
+
+export const getAllExcursions = () =>
+    fetch('/api/excursion').then(checkStatus);

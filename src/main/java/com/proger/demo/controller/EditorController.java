@@ -11,15 +11,16 @@ import javax.validation.Valid;
 @RequestMapping("/editor")
 public class EditorController {
 
-    private final ArticleService articleService;
-
     @Autowired
-    public EditorController(ArticleService articleService) {
-        this.articleService = articleService;
+    private ArticleService articleService;
+
+    @GetMapping
+    public String pr() {
+        return "It's editor";
     }
 
-    @PostMapping
+    @PostMapping(consumes = "application/json")
     public void addNewArticle(@RequestBody @Valid Article article) {
-        articleService.addNewArticle(null, article);
+        articleService.addNewArticle(article);
     }
 }
